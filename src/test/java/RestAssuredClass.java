@@ -16,4 +16,22 @@ public class RestAssuredClass {
                 .time(lessThan(1000L));
     }
 
+    @Test
+    public void swaggerStorePost(){
+        when().
+                post("https://petstore.swagger.io/#/store/placeOrder")
+                .then().statusCode(200)
+                .body("id",equalTo("0"))
+                .time(lessThan(1000L));
+    }
+
+    @Test
+    public void swaggerStoreDelete(){
+        when().
+                post("https://petstore.swagger.io/#/store/deleteOrder")
+                .then().statusCode(400)
+                .body("id",equalTo("0"))
+                .time(lessThan(1000L));
+    }
+
 }
